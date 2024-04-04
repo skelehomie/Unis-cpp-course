@@ -16,9 +16,7 @@ int main ()
     bool decimal = false;
     cin >> country >> weight >> price >> type;
 
-    if ((country != 'c' && country != 'C' && country != 'E' && country != 'e' && country != 't' && country != 'T' && country != 's' && country != 'S') || weight <= 0 || price <= 0)
-      cout << "invalid";
-      else {
+    if ((country == 'c' || country == 'C' || country == 'e' || country == 'E' || country == 'T' || country == 't' || country == 's' || country == 'S') && price > 0 && weight > 0 && (type == 'N' || type == 'n' || type == 'T' || type == 't')) {
     weight *= 10;
     floored = floor(weight);
     if (floored % 10 >=1 && floored % 10 <= 9 && weight >= 10){
@@ -54,7 +52,7 @@ int main ()
   cout << USA(decimal, firstKg, secondKg, remainder)<<endl<<customsFees;
 
     return 0;
-      }
+      } else cout << "invalid";
 }
 int china(bool decimal, bool firstKg, bool secondKg, int remainder){
   int shippingFees = 0;
