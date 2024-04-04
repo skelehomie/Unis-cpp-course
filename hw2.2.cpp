@@ -19,7 +19,7 @@ int main ()
     if ((country == 'c' || country == 'C' || country == 'e' || country == 'E' || country == 'T' || country == 't' || country == 's' || country == 'S') && price > 0 && weight > 0 && (type == 'N' || type == 'n' || type == 'T' || type == 't')) {
     weight *= 10;
     floored = floor(weight);
-    if (floored % 10 >=1 && floored % 10 <= 9 && weight >= 10){
+    if (floored % 10 >=1 && floored % 10 <= 9 && weight > 20){
       decimal = true;
     }
     if (floored / 10 >= 2) {
@@ -57,53 +57,45 @@ int main ()
 int china(bool decimal, bool firstKg, bool secondKg, int remainder){
   int shippingFees = 0;
   
-  if(firstKg)
+  if(firstKg || weight < 10)//checking for (0.1, 0.9) weights
     shippingFees += 8;
-  if(secondKg)
+  if(secondKg || (weight > 10 && weight < 20))//checking for (1.1, 1.9) weights
     shippingFees += 10;
   shippingFees += remainder * 12;
-  if (weight < 10)
-    shippingFees += 8;
-  else if(decimal)
+  if(decimal)
     shippingFees += 12;
 return shippingFees;
 }
 int turkey(bool decimal, bool firstKg, bool secondKg, int remainder){
   int shippingFees = 0;
-  if(firstKg)
+  if(firstKg || weight < 10)
     shippingFees += 5;
-  if(secondKg)
+  if(secondKg || (weight > 10 && weight < 20))
     shippingFees += 8;
   shippingFees += remainder * 10;
-  if (weight < 10)
-    shippingFees += 5;
-  else if(decimal)
+  if(decimal)
     shippingFees += 10;
 return shippingFees;
 }
 int UAE(bool decimal, bool firstKg, bool secondKg, int remainder){
   int shippingFees = 0;
-  if(firstKg)
+  if(firstKg || weight < 10)
     shippingFees += 3;
-  if(secondKg)
+  if(secondKg || (weight > 10 && weight < 20))
     shippingFees += 5;
   shippingFees += remainder * 8;
-  if (weight < 10)
-    shippingFees += 3;
-  else if(decimal)
+  if(decimal)
     shippingFees += 8;
 return shippingFees;
 }
 int USA(bool decimal, bool firstKg, bool secondKg, int remainder){
   int shippingFees = 0;
-  if(firstKg)
+  if(firstKg || weight < 10)
     shippingFees += 12;
-  if(secondKg)
+  if(secondKg || (weight > 10 && weight < 20))
     shippingFees += 18;
   shippingFees += remainder * 22;
-  if (weight < 10)
-    shippingFees += 12;
-  else if(decimal)
+  if(decimal)
     shippingFees += 22;
 return shippingFees;
 }

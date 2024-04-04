@@ -2,6 +2,6 @@
 using namespace std;
 int main()
 {
-cout << 5 % 10;
+cout << 5 / 10;
     return 0;
 }
